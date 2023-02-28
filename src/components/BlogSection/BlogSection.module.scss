@@ -1,0 +1,259 @@
+.blogSection {
+	width: 100%;
+	height: 50rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: #111;
+
+	.header {
+		display: block;
+		text-align: left;
+		width: 100%;
+		margin-top: 3rem;
+		padding-left: 3rem;
+		font-size: 3rem;
+		font-family: fantasy;
+		font-weight: 600;
+		text-shadow: 0.3rem 0.3em 1.5rem #fff;
+	}
+
+	.headerAnimate {
+		animation: animate 1.8s linear forwards;
+	}
+
+	.cardGrid {
+		width: 93%;
+		height: max-content;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0 1rem;
+		margin-top: 3rem;
+		padding: 1rem 0.9rem;
+
+		.card {
+			height: 25rem;
+			border-radius: 1rem;
+			position: relative;
+			overflow: hidden;
+			transition: 1s ease-in-out;
+			box-shadow: 0 0 1.8rem 0 rgba(255, 255, 255, 0.81) inset,
+				0 0 0.81rem 0 rgba(255, 255, 255, 0.36);
+
+			.description {
+                width: 100%;
+				height: 100%;
+				position: absolute;
+				top: -100%;
+				left: 0;
+				border-radius: 1rem;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				font-family: fantasy;
+				padding: 1rem;
+				transition: 0.45s ease-in-out;
+				background: rgba(0, 0, 0, 0.1);
+				color: #fff;
+
+                .content {
+                    margin-bottom: 1rem;
+                    font-size: 1.2rem;
+                }
+                
+                .readArticle {
+                    padding: 1rem 2.1rem;
+                    border-radius: 1.5rem;
+                    font-size: 1rem;
+                    font-family: fantasy;
+                    border: none;
+                    
+                    &:hover {
+                        cursor: pointer;
+                        background: rgba(211, 211, 211, 0.18);
+                        color: #fff;
+                    }
+                }
+			}
+
+            .cardTitle {
+                display: block;
+                text-align: left;
+                height: 80%;
+                padding-left: 1.2rem;
+                font-size: 3.6rem;
+                font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+                letter-spacing: 0.09rem;
+                transition: 0.5s ease-in-out;
+                transition-delay: 0.45s;
+                color: #fff;
+            }
+            
+            .footer {
+                height: 20%;
+                display: flex;
+                align-items: flex-end;
+                padding-left: 1.2rem;
+                padding-bottom: 0.5rem;
+                font-family: serif;
+                font-size: 1.2rem;
+                transition: 0.5s ease-in-out;
+                transition-delay: 0.45s;
+                color: #fff;
+            }
+
+            /** Gotta do something 'bout this. */
+			&:hover .description {
+				top: 0;
+				transition: 0.75s ease-in-out;
+			}
+
+            /** Gotta do something 'bout this. */
+            &:hover .cardTitle {
+                color: transparent;
+                transition: 0.45s ease-in-out;
+            }
+            
+            /** Gotta do something 'bout this. */
+            &:hover .footer {
+                transition: 0.45s ease-in-out;
+                color: transparent;
+            }
+		}
+	}
+
+    .more {
+        width: 100%;
+        height: max-content;
+        display: flex;
+        align-items: flex-start;
+        margin-top: 4.5rem;
+        padding-left: 4.5rem;
+        transition: all 1s ease-in-out;
+
+        .readMore {
+            width: 9rem;
+            height: 3.75rem;
+            border: none;
+            padding: 1rem 0;
+            border-radius: 1.8rem;
+            font-family: fantasy;   
+            font-size: 1.2rem;
+            text-decoration: none;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+            box-shadow: 0 0 1.2rem 0 rgba(255, 255, 255, 0.81);
+
+
+            &:hover {
+                cursor: pointer;
+                font-size: 1.2rem;
+                letter-spacing: 0.01rem;
+                box-shadow: 0 0 2.1rem 0 #fff;
+            }
+
+            .readText {
+                white-space: nowrap;
+                transition: all 0.5s ease-in-out;
+                color: white;
+                background-color: #111;
+
+            }
+
+            .readTextClicked {
+                color: transparent;
+                text-indent: 100%;
+                white-space: nowrap;
+                transition: all 0.5s ease-in-out;
+            }
+
+            .tick {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                color: transparent;
+                width: 1rem;
+                aspect-ratio: 1;
+                z-index: -1;
+                opacity: 0;
+                transition: 1s ease-in-out;
+                transition-delay: 0.5s;
+            }
+
+            .tickClicked {
+                opacity: 1;
+                z-index: 9;
+            }
+
+            .color {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+                width: 0;
+                height: 0;
+                visibility: hidden;
+                transition: 0.75s ease-in-out;
+                transform-origin: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+                color: transparent;
+            }
+
+            .expanded {
+                width: 100%;
+                height: 100%;
+                color: #fff;
+            }            
+        }
+
+        .readMoreClicked {
+            transition: all 0.5s ease-in-out;
+            width: 3.75rem;
+            height: 3.75rem;
+        }
+    }   
+}
+
+@keyframes animate {
+	0%,
+	18%,
+	20%,
+	50.1%,
+	60%,
+	65.1%,
+	80%,
+	90.1%,
+	92% {
+		color: black;
+		text-shadow: 0.3rem 0.3em 1.5rem #fff;
+	}
+	18.1%,
+	20.1%,
+	30%,
+	50%,
+	60.1%,
+	65%,
+	80.1%,
+	90%,
+	92.1%,
+	100% {
+		color: #fff;
+		text-shadow: 0 0 1rem rgb(255, 255, 255, 0.3), 0 0 2.4rem rgba(255, 255, 255, 0.45);
+	}
+}
+
+
+
+
+

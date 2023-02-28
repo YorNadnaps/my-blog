@@ -1,0 +1,41 @@
+.blog {
+    width: 100%;
+    height: max-content;
+
+    .headerImage {
+        width: 100%;
+        height: 100vh;
+        background: url('./blog.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        filter: grayscale(100%);
+        position: relative;
+    }
+
+    .headerImage::before {
+        position: absolute;
+        content: 'Blog';
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        font-size: 9rem;
+        font-weight: 900;
+        font-family: fantasy;
+        padding-bottom: 3rem;
+        backdrop-filter: blur(0.48rem);
+        color: #fff;
+        text-shadow: 0 0 1rem rgba(0,0,0,1);
+    }
+
+    .blogList {
+        width: 100%;
+        height: 100vh;
+    }
+}
+

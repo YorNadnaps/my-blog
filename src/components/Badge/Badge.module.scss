@@ -1,0 +1,90 @@
+.homePageBannerBadge {
+	width: 18rem;
+	height: 27rem;
+	position: relative;
+	top: 50%;
+	left: 3rem;
+	border-radius: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transform: translateY(-50%);
+    backdrop-filter: blur(1rem);
+	background-color: rgba(0,0,0,0.45);
+	box-shadow: 0 0 1.8rem 0 #fff;
+
+    .persona {
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        margin: 1.8rem 0;
+        display: grid;
+        align-items: center;
+        font-size: 2.4rem;
+        font-family: "Times New Roman", Times, serif;
+        background-color: rgba(0,0,0,1);
+        border: 0.1rem solid #fff;
+        color: #fff;
+    }
+
+    .horizontalLine {
+        width: 90%;
+        border: 0.1rem solid lightgray;
+    }
+    
+    .nameTag {
+        margin: 0.6rem 0;
+        font-size: 1.5rem;
+        letter-spacing: 0.135rem;
+        font-family: "Times New Roman", Times, serif;
+        color: #fff;
+
+        & b {
+            font-size: 1.65rem;
+        }
+    }
+    
+    .locationTag {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: 0.96rem;
+        color: #fff;
+    }
+
+    .about {
+        margin-top: 7.5rem;
+        padding: 1rem 2.7rem;
+        border-radius: 2rem;
+        border: none;
+        position: relative;
+        overflow: hidden;
+        font-family: fantasy;
+        text-decoration: none;
+        background: rgba(0,0,0,0.81);
+        color: white;
+        border: 1px solid white;
+    }
+
+    .ripple {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        pointer-events: none;
+        animation: ripple 0.5s linear;
+        background: #fff;
+    }
+}
+
+@keyframes ripple {
+	0% {
+		width: 0;
+		height: 0;
+		opacity: 1;
+	}
+	100% {
+		width: 300px;
+		height: 300px;
+		opacity: 0;
+	}
+}
