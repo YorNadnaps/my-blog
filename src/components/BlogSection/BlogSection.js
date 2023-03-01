@@ -46,7 +46,7 @@ const BlogSection = () => {
 					onClick={onReadMorePosts}
 				>
 					<div className={styles.readText}>Read more</div>
-                    <img className={styles.tick} src={tick} />
+                    <span className={styles.tick}></span>
 				</div>
 			</div>
 			<Observer

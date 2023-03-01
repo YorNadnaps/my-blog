@@ -7,7 +7,7 @@ const Blog = () => {
         <div className={styles.blog}>
             <div className={styles.headerImage}></div>
             <div className={styles.blogList}>{
-                Blogs.forEach(blog => {
+                Blogs.map(blog => {
                     return (
                         <div>This is a card</div>
                     )
