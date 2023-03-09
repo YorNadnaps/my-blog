@@ -56,16 +56,20 @@
             height: 18rem;
             margin: 2.7rem 0;
             border-radius: 1.2rem;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: 'Cormorant Garamond', serif;
             box-shadow: 0 0 1.8rem #fff, 0 0 0.6rem #fff inset;
-            background: rgba(0,0,0,0.63);
+            background: rgba(0,0,0,0.72);
             letter-spacing: 0.03rem;
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
+            transition: 0.3s ease-in-out;
+            border: 0.06rem solid #fff;
 
             &:hover {
                 cursor: pointer;
+                transform: scale(1.05);
+                transition: 0.3s ease-in-out;
             }
 
             .line {

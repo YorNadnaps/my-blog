@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { BlogSectionCardsConfig } from "../../config/BlogSectionCardsConfig";
-import tick from './tick.png';
 import styles from "./BlogSection.module.scss";
 
 const BlogSection = () => {
@@ -89,11 +88,16 @@ const Observer = ({ selector, callback }) => {
 };
 
 const Card = ({ id, title, description }) => {
+    const navigate = useNavigate();
+    const onClick = () => {
+        navigate('/blog/P3Y4vmFpfa76z5Twmdsv');
+    };
+
 	return (
 		<div key={id} className={styles.card}>
 			<div className={styles.description}>
 				<span className={styles.content}>{description}</span>
-				<button className={styles.readArticle}>Read more</button>
+				<button className={styles.readArticle} onClick={onClick}>Read more</button>
 			</div>
 			<div className={styles.cardTitle}>{title}</div>
 			<div className={styles.footer}>Nov 01, 2007 | 5 min read</div>

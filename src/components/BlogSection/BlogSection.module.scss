@@ -1,6 +1,7 @@
 .blogSection {
 	width: 100%;
-	height: 50rem;
+	height: max-content;
+    padding: 3rem 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -8,10 +9,9 @@
 
 	.header {
 		display: block;
-		text-align: left;
+		text-align: center;
 		width: 100%;
-		margin-top: 3rem;
-		padding-left: 3rem;
+		margin: 7.5rem 0;
 		font-size: 3rem;
 		font-family: fantasy;
 		font-weight: 600;
@@ -23,16 +23,16 @@
 	}
 
 	.cardGrid {
-		width: 93%;
+		width: 45%;
 		height: max-content;
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 0 1rem;
+		grid-template-rows: repeat(3, 1fr);
+		gap: 3.6rem 0;
 		margin-top: 3rem;
 		padding: 1rem 0.9rem;
 
 		.card {
-			height: 25rem;
+			height: 18rem;
 			border-radius: 1rem;
 			position: relative;
 			overflow: hidden;
@@ -81,9 +81,11 @@
 				display: block;
 				text-align: left;
 				height: 80%;
-				padding-left: 1.2rem;
+				padding-left: 1.5rem;
+                padding-top: 1.2rem;
 				font-size: 3.6rem;
-				font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+                font-family: 'Cormorant Garamond', serif;
+                font-weight: bolder;
 				letter-spacing: 0.09rem;
 				transition: 0.5s ease-in-out;
 				transition-delay: 0.45s;
@@ -93,14 +95,14 @@
 			.footer {
 				height: 20%;
 				display: flex;
-				align-items: flex-end;
-				padding-left: 1.2rem;
-				padding-bottom: 0.5rem;
+				align-items: flex-start;
+				padding-left: 1.5rem;
 				font-family: serif;
 				font-size: 1.2rem;
 				transition: 0.5s ease-in-out;
 				transition-delay: 0.45s;
 				color: #fff;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 			}
 
 			/** Gotta do something 'bout this. */
@@ -125,12 +127,11 @@
 
 	.more {
 		width: 100%;
-		height: max-content;
-		display: flex;
-		align-items: flex-start;
-		margin-top: 4.5rem;
-		padding-left: 4.5rem;
-		transition: all 1s ease-in-out;
+        height: max-content;
+        display: flex;
+        justify-content: center;
+        margin: 4.5rem 0;
+        transition: all 1s ease-in-out;
 
 		.readMore {
 			width: 9rem;
@@ -171,21 +172,6 @@
 				transition: all 0.5s ease-in-out;
 			}
 
-			// .tick {
-			// 	position: absolute;
-			// 	left: 50%;
-			// 	top: 50%;
-			// 	transform: translate(-50%, -50%);
-			// 	color: transparent;
-			// 	width: 1rem;
-			// 	aspect-ratio: 1;
-			// 	z-index: -1;
-			// 	opacity: 0;
-			// 	transition: 1s ease-in-out;
-			// 	transition-delay: 0.5s;
-            //     border: 1px solid white;
-			// }
-
 			.tick {
 				width: 2.4rem;
 				height: 2.4rem;
@@ -199,6 +185,7 @@
 				opacity: 0;
                 transition-delay: 0.5s;
 			}
+
 			.tick::after {
 				content: "";
 				box-sizing: border-box;
