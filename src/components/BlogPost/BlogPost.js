@@ -2,10 +2,12 @@ import React from "react";
 import Markdown from 'markdown-to-jsx';
 import axios from 'axios';
 import styles from "./BlogPost.module.scss";
+import { useLocation } from "react-router-dom";
 
 const BlogPost = () => {
 	const [data, setData] = React.useState("");
     const [loading, setLoading] = React.useState(true);
+    const { state } = useLocation();
 
 	React.useEffect(() => {
         const headers = {
@@ -14,13 +16,16 @@ const BlogPost = () => {
         };
         setLoading(true);
         axios.get("http://localhost:9090/getBlogPosts", {
-            headers
+            headers,
+            params: {
+                path: state.path
+            }
         })
             .then((response) => {
                 setData(response.data);
                 setLoading(false);
             }).catch(console.error);
-	}, []);
+	}, [state]);
 
     if (loading) {
         return (

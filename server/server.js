@@ -33,9 +33,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/getBlogPosts", async (req, res) => {
-    getDownloadURL(ref(storage, 'blogs/blog.md'))
+    const { path } = req.query;
+    getDownloadURL(ref(storage, path))
         .then((url) => {
-            console.log(url);
             axios.get(url).then(response => {
                 const data = response.data;
                 res.status(200).send(data);

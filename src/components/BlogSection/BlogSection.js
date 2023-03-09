@@ -90,7 +90,11 @@ const Observer = ({ selector, callback }) => {
 const Card = ({ id, title, description }) => {
     const navigate = useNavigate();
     const onClick = () => {
-        navigate('/blog/P3Y4vmFpfa76z5Twmdsv');
+        navigate('/blog/P3Y4vmFpfa76z5Twmdsv', {
+            state: {
+                path: 'blogs/blog.md'
+            }
+        });
     };
 
 	return (
