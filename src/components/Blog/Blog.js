@@ -5,8 +5,13 @@ import styles from './Blog.module.scss';
 
 const Blog = () => {
     const navigate = useNavigate();
-    const onCardClick = () => {
-        navigate('/blog/007');
+    const onCardClick = (id, path, title) => {
+        navigate(`/blog/${id}`, {
+            state: {
+                path,
+                title
+            }
+        });
     }
     return (
         <div className={styles.blog}>
@@ -14,9 +19,9 @@ const Blog = () => {
             <div className={styles.blogList}>
                 <div className={styles.blogHeader}>Posts</div>
                 {
-                    Blogs.map(({ title, description }) => {
+                    Blogs.map(({ id, path, title, description }) => {
                         return (
-                            <div className={styles.blogCard} onClick={onCardClick}>
+                            <div className={styles.blogCard} onClick={() => onCardClick(id, path, title)}>
                                 <div className={styles.title}>{title}</div>
                                 <div className={styles.line}></div>
                                 <div className={styles.description}>{description}</div>

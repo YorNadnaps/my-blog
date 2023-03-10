@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { BlogSectionCardsConfig } from "../../config/BlogSectionCardsConfig";
+import { Blogs } from "../../config/Blogs";
 import styles from "./BlogSection.module.scss";
 
 const BlogSection = () => {
@@ -34,8 +34,8 @@ const BlogSection = () => {
 				Featured Posts
 			</div>
 			<div className={styles.cardGrid}>
-				{BlogSectionCardsConfig.map(({ id, title, description }) => {
-					return <Card id={id} title={title} description={description} />;
+				{Blogs.map((props) => {
+					return <Card {...props} />;
 				})}
 			</div>
 			<div className={styles.more}>
@@ -87,12 +87,13 @@ const Observer = ({ selector, callback }) => {
 	return null;
 };
 
-const Card = ({ id, title, description }) => {
+const Card = ({ id, title, description, estimatedTime, publishDate, path }) => {
     const navigate = useNavigate();
     const onClick = () => {
-        navigate('/blog/P3Y4vmFpfa76z5Twmdsv', {
+        navigate(`/blog/${id}`, {
             state: {
-                path: 'blogs/blog.md'
+                path,
+                title
             }
         });
     };
@@ -104,7 +105,7 @@ const Card = ({ id, title, description }) => {
 				<button className={styles.readArticle} onClick={onClick}>Read more</button>
 			</div>
 			<div className={styles.cardTitle}>{title}</div>
-			<div className={styles.footer}>Nov 01, 2007 | 5 min read</div>
+			<div className={styles.footer}>{publishDate} | {estimatedTime}</div>
 		</div>
 	);
 };

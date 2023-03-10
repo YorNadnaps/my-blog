@@ -42,6 +42,18 @@ export const Home = () => {
     const FIRST_QUOTE = 'The sovereignty of one’s self over one’s self is called Liberty';
     const SECOND_QUOTE = 'It\'s all in the mind!';
 
+    React.useEffect(() => {
+        const appElement = document.getElementById("app");
+        const { scrollTop } = appElement;
+        if (firstQuoteRef.current) {
+            firstQuoteRef.current.style.left = `${100 - scrollTop * OFFSET_MULTIPLIER}%`;
+        }
+
+        if (secondQuoteRef.current) {
+            secondQuoteRef.current.style.right = `${100 - scrollTop * OFFSET_MULTIPLIER}%`;
+        }
+    }, []);
+
     useHome(firstQuoteScrollHandler, secondQuoteScrollHandler);
 	return (
 		<div className={styles.home}>

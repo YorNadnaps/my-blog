@@ -36,6 +36,7 @@ const BlogPost = () => {
     }
 	return (
 		<div className={styles.blogPost}>
+            <h1 className={styles.title}>{state.title}</h1>
             <Markdown>
                 {data}
             </Markdown>
