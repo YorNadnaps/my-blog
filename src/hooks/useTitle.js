@@ -1,23 +1,16 @@
 import React from 'react';
 
-const useTitle = function (title) {
-    const documentDefined = document !== undefined;
-    const actualTitle = React.useRef(documentDefined? document.title : null);
-
+const useTitle = function (pageTitle) {
     React.useEffect(() => {
-        const originalTitle = actualTitle.current;
-        if (!documentDefined) {
-            return;
-        }
+        if (pageTitle) {
+            const prevTitle = document.title;
+            document.title = pageTitle;
 
-        if (document.title !== title) {
-            document.title = title;
+            return () => {
+                document.title = prevTitle;
+            };
         }
-
-        return () => {
-            document.title = originalTitle;
-        }
-    }, [documentDefined, title]);
+    }, [pageTitle]);
 };
 
 export default useTitle;

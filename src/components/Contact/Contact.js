@@ -1,4 +1,5 @@
 import React from "react";
+import useTitle from "../../hooks/useTitle";
 import styles from "./Contact.module.scss";
 
 const Contact = () => {
@@ -10,6 +11,7 @@ const Contact = () => {
 		e.preventDefault();
 	};
 
+    useTitle('Contact');
 	return (
 		<div className={styles.contact}>
 			<div className={styles.description}>

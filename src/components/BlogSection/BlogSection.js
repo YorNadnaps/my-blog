@@ -35,7 +35,7 @@ const BlogSection = () => {
 			</div>
 			<div className={styles.cardGrid}>
 				{Blogs.map((props) => {
-					return <Card {...props} />;
+					return <Card key={props.id} {...props} />;
 				})}
 			</div>
 			<div className={styles.more}>
@@ -52,10 +52,13 @@ const BlogSection = () => {
 				selector={styles.header}
 				callback={(entries) => {
 					entries.forEach((entry) => {
-						entry.target.classList.toggle(
-							styles.headerAnimate,
-							entry.isIntersecting
-						);
+                        console.log(entry);
+                        if (entry.boundingClientRect.top > 50) {
+                            entry.target.classList.toggle(
+                                styles.headerAnimate,
+                                entry.isIntersecting
+                            );
+                        }
 					});
 				}}
 			/>
@@ -73,8 +76,8 @@ const Observer = ({ selector, callback }) => {
 	React.useEffect(() => {
 		const observer = new IntersectionObserver((entries) => callback(entries), {
 			root: null,
-			rootMargin: "-100px",
-			threshold: 0.18,
+			rootMargin: "-50px",
+			threshold: 0,
 		});
 
 		const element = document.querySelector(`.${selector}`);

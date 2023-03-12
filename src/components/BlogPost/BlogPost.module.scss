@@ -48,6 +48,11 @@
 		mask: radial-gradient(farthest-side, #0000 calc(100% - 9px), #000 0);
 		animation: spinner-zp9dbg 1s infinite linear;
 	}
+
+    .error {
+        color: #fff;
+        font-size: 1.5rem;
+    }
 }
 
 @keyframes spinner-zp9dbg {

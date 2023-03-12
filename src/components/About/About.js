@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './About.module.css';
+import useTitle from '../../hooks/useTitle';
 
 const About = () => {
   const textRef = React.useRef();
@@ -10,6 +11,8 @@ const About = () => {
       textRef.current.style.opacity = `${1-offset*0.0015}`;
     }
   };
+
+  useTitle('About');
   React.useEffect(() => {
     const appElement = document.getElementById('app');
     appElement.addEventListener('scroll', onScroll);

@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 const BlogPost = () => {
 	const [data, setData] = React.useState("");
     const [loading, setLoading] = React.useState(true);
+    const [error, setError] = React.useState(null);
     const { state } = useLocation();
 
 	React.useEffect(() => {
@@ -23,8 +24,16 @@ const BlogPost = () => {
         })
             .then((response) => {
                 setData(response.data);
+            }).catch(err => {
+                console.log(err);
+                if (err?.response?.data) {
+                    setError(err.response.data);
+                } else {
+                    setError(err);
+                }
+            }).finally(() => {
                 setLoading(false);
-            }).catch(console.error);
+            });
 	}, [state]);
 
     if (loading) {
@@ -33,6 +42,14 @@ const BlogPost = () => {
                 <div className={styles.spinner} />
             </div>
         );
+    }
+
+    if (error) {
+        return (
+            <div className={styles.loading}>
+                <div className={styles.error}>{error}</div>
+            </div>
+        )
     }
 	return (
 		<div className={styles.blogPost}>

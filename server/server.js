@@ -34,14 +34,21 @@ app.get("/", (req, res) => {
 
 app.get("/getBlogPosts", async (req, res) => {
     const { path } = req.query;
+    if (!path) {
+        res.status(500).send('The file path is not of the right format.');
+        return;
+    }
     getDownloadURL(ref(storage, path))
         .then((url) => {
             axios.get(url).then(response => {
                 const data = response.data;
                 res.status(200).send(data);
+            }).catch((err) => {
+                res.status(500).send('Something went wrong while fetching data or the data wasn\'t found.');
             });
-        })
-	
+        }).catch((err) => {
+            res.status(500).send('Something went wrong while fetching data or the data wasn\'t found.');
+        });
 });
 
 app.listen(PORT, () => {
