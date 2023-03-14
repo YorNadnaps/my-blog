@@ -16,7 +16,7 @@ const BlogPost = () => {
             "Access-Control-Allow-Methods": "GET,POST,PATCH,OPTIONS"
         };
         setLoading(true);
-        axios.get("http://localhost:9090/getBlogPosts", {
+        axios.get("http://localhost:8081/getBlogPosts", {
             headers,
             params: {
                 path: state.path

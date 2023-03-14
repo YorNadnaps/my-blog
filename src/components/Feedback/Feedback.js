@@ -55,7 +55,7 @@ const Feedback = () => {
             "Access-Control-Allow-Methods": "GET,POST,PATCH,OPTIONS"
         };
         
-        axios.get('http://localhost:9090/sendHowYouFeel', {
+        axios.get('http://localhost:8081/sendHowYouFeel', {
             headers,
             params: {
                 doc: {

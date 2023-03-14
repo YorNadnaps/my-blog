@@ -12,5 +12,5 @@ RUN cd server && npm install
 COPY server/server.js /app/server/
 WORKDIR /app/server
 
-EXPOSE 9090
+EXPOSE 8081
 CMD ["npm", "start"];
