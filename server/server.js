@@ -84,7 +84,7 @@ app.get("/contact", async (req, res) => {
     res.status(200).send('The document has been written successfully.');
 });
 
-app.get('/myblog/*', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, STATIC_FILE_PATH));
 });
 
