@@ -1,14 +1,52 @@
 import React from "react";
 import useTitle from "../../hooks/useTitle";
+import axios from 'axios';
+import useToast from "../../hooks/useToast";
 import styles from "./Contact.module.scss";
 
 const Contact = () => {
 	const [name, setName] = React.useState();
 	const [email, setEmail] = React.useState();
 	const [message, setMessage] = React.useState();
+    const toast = useToast();
 
 	const onSubmit = (e) => {
 		e.preventDefault();
+
+        console.log(`
+        --------------------------------------------
+            Following is the info you've entered:
+            - Name: ${name}
+            - Email: ${email}
+            - Message: ${message}
+        ------X-----------------------------X-------
+        `);
+
+        setName('');
+        setEmail('');
+        setMessage('');
+
+        const headers = {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,POST,PATCH,OPTIONS"
+        };
+
+        axios.get('http://localhost:9090/contact', {
+            headers,
+            params: {
+                doc: {
+                    Name: name,
+                    Email: email,
+                    Message: message
+                }
+            }
+        }).then(response => {
+            console.log('Message submitted successfully.');
+            toast.showToast('');
+        }).catch(err => {
+            console.error('Failed to submit message.');
+        });
+
 	};
 
     useTitle('Contact');

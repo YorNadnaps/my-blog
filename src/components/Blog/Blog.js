@@ -42,6 +42,14 @@ const Blog = () => {
                     })
                 }
             </div>
+            <div className={styles.boxContainer}>
+                <div className={styles.header}>The 3 phases of transformation</div>
+                <div className={styles.wrapper}>
+                    <div className={styles.box1}><span>1.</span><div id="quote">This is quote 1</div></div>
+                    <div className={styles.box2}><span>2.</span><div id="quote">This is quote 1</div></div>
+                    <div className={styles.box3}><span>3.</span><div id="quote">This is quote 1</div></div>
+                </div>
+            </div>
         </div>
     );
 };

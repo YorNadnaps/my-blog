@@ -5,15 +5,18 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import { ToastProvider } from "./components/Toast/Toast";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
-		<ErrorBoundary>
-			<Router>
-				<App />
-			</Router>
-		</ErrorBoundary>
+		<Router basename="/my-blog">
+			<ErrorBoundary>
+				<ToastProvider>
+					<App />
+				</ToastProvider>
+			</ErrorBoundary>
+		</Router>
 	</React.StrictMode>
 );
 

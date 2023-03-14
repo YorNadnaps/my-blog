@@ -1,118 +1,126 @@
 .footer {
-  width: 100%;
-  height: 27vh;
-  background: rgba(0,0,0, 0.9);
-  display: flex;
-  flex-direction: column;
-}
+	width: 100%;
+	height: max-content;
+	background: rgba(0, 0, 0, 0.9);
+	display: flex;
+	flex-direction: column;
+    padding-top: 3rem;
 
-.section {
-  margin-top: 1.5rem;
-  width: 100%;
-  height: max-content;
-  display: flex;
-  padding-left: 0.6rem;
-}
+	.section {
+		width: 100%;
+		height: max-content;
+		display: flex;
 
-.flower {
-  width: 9rem;
-  height: 9rem;
-  filter: saturate(3) invert(100%);
-}
+        .logo {
+            width: 50%;
+            height: 10rem;
+            padding-left: 1rem;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
 
-.name {
-  margin-left: 1rem;
-  padding-left: 0.6rem;
-  border-left: 0.27rem solid #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-}
+            .flowerOfLifeLogo {
+                width: 9rem;
+                height: 9rem;
+                filter: saturate(3) invert(100%);
+            }
 
-.name p:not(:last-child) {
-  font-size: 2.4rem;
-  font-family:monospace;
-  color: #fff;
-  line-height: 1rem;
-  
-}
+            .logoName {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+    			border-left: 0.27rem solid #fff;
+                margin-left: 0.6rem;
+                padding-left: 0.6rem;
+                height: 96%;
 
-.name p:not(:last-child)::first-letter {
-  font-weight: bolder;
-  font-size: 3rem;
-}
+                & p[id="logo-name"] {
+                    font-size: 2.4rem;
+                    font-family: 'Alegreya', serif;
+                    color: #fff;
+                    line-height: 1.2rem;
 
-.name p {
-  font-size: 1.2rem;
-  font-family: fantasy;
-  color: whitesmoke;
-}
+                    &::first-letter {
+                        font-weight: bolder;
+                        font-size: 3rem;
+                    }
+                }
 
-.subscribe {
-  width: 66%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding-left: 45%;
-}
+                & p[id="catch-phrase"] {
+                    font-family: fantasy;
+                    color: #fff;
+                    font-size: 1.2rem;
+                }
+            }
+        }
 
-.heading {
-  font-size: 1.2rem;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  color: #fff;
-  margin-bottom: 1rem;
-  width: 18rem;
-  font-weight: 600;
-}
+        .subscription {
+            width: 50%;
+            height: 10rem;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            padding-right: 3rem;
 
-.subscribe div {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-left: 0.5rem;
-}
+            .heading {
+                font-size: 1.2rem;
+                font-family: Georgia, "Times New Roman", Times, serif;
+                color: #fff;
+                margin-bottom: 1.2rem;
+                width: 18rem;
+                font-weight: 600;
+            }
 
-.subscribe div .email {
-  padding: 0.45rem 0;
-  padding-left: 0.3rem;
-  border: none;
-  outline: none;
-  color: #fff;
-  width: 10rem;
-  border-bottom: 1px solid #fff;
-  background: transparent;
-}
+            .formContainer {
+                .email {
+                    padding: 0.45rem 0;
+                    padding-left: 0.3rem;
+                    border: none;
+                    outline: none;
+                    color: #fff;
+                    width: 12rem;
+                    border-bottom: 1px solid #fff;
+                    background: transparent;
 
-.subscribe div .email::placeholder {
-  font-family: fantasy;
-  color: #fff;
-}
+                    &::placeholder {
+                        font-family: fantasy;
+	                    color: #fff;
+                    }
+                }
 
-.subscribe div .submit {
-  margin-left: 2.1rem;
-  padding: 0.5rem 0.9rem;
-  border-radius: 1rem;
-  border: none;
-  font-family: fantasy;
-  font-weight: bolder;
-  background-color: rgba(0,0,0, 0.27);
-  color: #fff;
-  box-shadow: 0 0 0.5rem 0 #fff;
-}
+                .submit {
+                    margin-left: 1.2rem;
+                    padding: 0.5rem 0.9rem;
+                    border-radius: 1rem;
+                    border: none;
+                    font-family: fantasy;
+                    font-weight: bolder;
+                    background-color: rgba(0, 0, 0, 0.27);
+                    color: #fff;
+                    box-shadow: 0 0 0.5rem 0 #fff;
 
-.subscribe div .submit:hover {
-  cursor: pointer;
-  background-color: rgba(0,0,0, 0.96);
-}
+                    &:hover {
+                        cursor: pointer;
+	                    background-color: rgba(0, 0, 0, 0.96);
+                    }
+                }
+            }
 
-.disclaimer {
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  margin-top: 3rem;
-  padding-left: 0.6rem;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: #fff;
+        }
+	}
+
+    .disclaimer {
+        width: 100%;
+        display: grid;
+        place-items: center;
+        margin-top: 3rem;
+        padding: 0.9rem 0 1.2rem 0;
+        padding-left: 0.6rem;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        color: #fff;
+    }
 }

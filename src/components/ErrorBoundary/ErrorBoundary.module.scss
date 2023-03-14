@@ -1,12 +1,53 @@
 .errorBoundary {
     width: 100vw;
     height: 100vh;
+    padding: 3rem;
     color: white;
     background: #000;
     font-family: 'Times New Roman', Times, serif;
     font-size: 1.2rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    h1 {
+        width: 100%;
+        text-align: center;
+        margin: 2rem 0;
+    }
+
+    div {
+        width: 100%;
+        margin: 1rem 0;
+        
+        pre {
+            white-space: pre-wrap;
+        }
+
+        b {
+            color: red;
+            font-size: 1.8rem;
+        }
+    }
+
+    .goHomeButton {
+        display: grid;
+        place-items: center;
+
+        .navLink {
+            color: #fff;
+            text-decoration: none;
+            box-shadow: 0 0 0.5rem #fff;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: transparent;
+
+            &:hover {
+                box-shadow: 0 0 1.5rem 0 #fff;
+                cursor: pointer;
+            }
+        }
+    }
 }

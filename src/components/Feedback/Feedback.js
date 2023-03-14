@@ -1,4 +1,6 @@
 import React from "react";
+import axios from 'axios';
+import useToast from "../../hooks/useToast";
 import styles from "./Feedback.module.scss";
 
 const useFeedback = function (onScroll) {
@@ -15,6 +17,8 @@ const useFeedback = function (onScroll) {
 const Feedback = () => {
 	const [name, setName] = React.useState("");
 	const [message, setMessage] = React.useState("");
+    const [isSending, setIsSending] = React.useState(false);
+    const toast = useToast();
 
 	const ball1 = React.useRef();
 	const ball2 = React.useRef();
@@ -33,6 +37,41 @@ const Feedback = () => {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
+        setIsSending(true);
+
+        console.log(`
+        ------------------------------------------
+            Following is the data you've entered:
+            - Name: ${name}
+            - Message: ${message}
+        ------X----------------------------X------
+        `);
+
+        setName('');
+        setMessage('');
+
+        const headers = {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,POST,PATCH,OPTIONS"
+        };
+        
+        axios.get('http://localhost:9090/sendHowYouFeel', {
+            headers,
+            params: {
+                doc: {
+                    Name: name,
+                    Message: message
+                }
+            }
+        }).then((response) => {
+            console.log(response);
+            toast.showToast('Message sent...')
+        }).catch(err => {
+            console.error(err);
+            toast.showToast('Failed to send message.');
+        }).finally(() => {
+            setIsSending(false);
+        })
 	};
 	return (
 		<div className={styles.feedback}>
@@ -56,6 +95,7 @@ const Feedback = () => {
 						value={name}
 						name="name"
 						onChange={(e) => setName(e.target.value)}
+                        autoComplete="off"
 					/>
 				</div>
 				<div className={styles.message}>
@@ -70,7 +110,10 @@ const Feedback = () => {
 						onChange={(e) => setMessage(e.target.value)}
 					></textarea>
 				</div>
-				<input type="submit" className={styles.submit} />
+                <div className={styles.submitContainer}>
+                    <input type="submit" className={styles.submit} />
+                    {isSending && <div className={styles.lds_ripple}><div></div><div></div></div>}
+                </div>
 			</form>
 		</div>
 	);
