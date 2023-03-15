@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Footer.module.scss";
 import useToast from "../../hooks/useToast";
 import flower from "./flower.png";
+import axios from 'axios';
 
 const Footer = () => {
 	const [input, setInput] = React.useState("");
@@ -19,7 +20,7 @@ const Footer = () => {
                 From : "yornadnaps@gmail.com",
                 Subject : "Welcome to my blog",
                 Body : `
-                Hello there,<br><br>
+                Hello there!<br><br>
 
                 Thanks for visiting my blog site.<br>
                 We are happy to have you here and hope you have a good time.<br>
@@ -29,12 +30,33 @@ const Footer = () => {
                 Team YorNadnaps
                 `
             }).then(() =>  {
-                setInput('');
-                toast.showToast('We\'ve sent you a welcome email.');
+                toast.showToast('We\'ve sent you a welcome email. :)');
+            }).catch(() => {
+                toast.showToast('Encountered issue while sending email. :(');
             });
+
+            const headers = {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET,POST,PATCH,OPTIONS"
+            };
+
+            axios.get("http://localhost:8081/setEmail", {
+                headers,
+                params: {
+                    doc: {
+                        email: input
+                    }
+                }
+            })
+                .then(() => {
+                    setInput('');
+                    toast.showToast('Successfully added email to subscribers list');
+                }).catch(err => {
+                    console.log(err);
+                    setInput('');
+                    toast.showToast('Encountered issue trying to add email.');
+                });
         }
-        setInput('');
-       
     };
 
 	return (

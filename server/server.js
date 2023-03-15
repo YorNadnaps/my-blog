@@ -84,6 +84,19 @@ app.get("/contact", async (req, res) => {
     res.status(200).send('The document has been written successfully.');
 });
 
+app.get("/setEmail", async (req, res) => {
+    const { doc } = req.query;
+    try {
+        const docRef = await addDoc(collection(firestoreDb, 'emails'), doc);
+        console.log('Doc written with id: ', docRef.id);
+    } catch (ex) {
+        console.error(`Failed to send message with error: ${ex}`);
+        res.status(500).send('Something went wrong while trying to send message.');
+        return;
+    }
+    res.status(200).send('The document has been written successfully.');
+});
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, STATIC_FILE_PATH));
 });
