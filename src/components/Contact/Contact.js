@@ -31,7 +31,7 @@ const Contact = () => {
             "Access-Control-Allow-Methods": "GET,POST,PATCH,OPTIONS"
         };
 
-        axios.get('http://localhost:8081/contact', {
+        axios.get('/contact', {
             headers,
             params: {
                 doc: {

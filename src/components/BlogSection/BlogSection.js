@@ -53,7 +53,7 @@ const BlogSection = () => {
 				callback={(entries) => {
 					entries.forEach((entry) => {
                         console.log(entry);
-                        if (entry.boundingClientRect.top > 50) {
+                        if (entry.boundingClientRect.top > 54) {
                             entry.target.classList.toggle(
                                 styles.headerAnimate,
                                 entry.isIntersecting
@@ -93,12 +93,9 @@ const Observer = ({ selector, callback }) => {
 const Card = ({ id, title, description, estimatedTime, publishDate, path }) => {
     const navigate = useNavigate();
     const onClick = () => {
-        navigate(`/blog/${id}`, {
-            state: {
-                path,
-                title
-            }
-        });
+        const pathComponents = path.split('/');
+        const blogId = pathComponents[1].split('.')[0]; /** This is because paths are of type: 'blogs/blogX.md' */
+        navigate(`/blog/${blogId}`);
     };
 
 	return (

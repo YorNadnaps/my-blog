@@ -5,26 +5,15 @@ import useTitle from '../../hooks/useTitle';
 import styles from './Blog.module.scss';
 
 const Blog = () => {
-    const [loading, setLoading] = React.useState(false);
     const navigate = useNavigate();
 
     useTitle('Blog');
-    const onCardClick = (id, path, title) => {
-        navigate(`/blog/${id}`, {
-            state: {
-                path,
-                title
-            }
-        });
+    const onCardClick = (path) => {
+        const pathComponents = path.split('/');
+        const blogId = pathComponents[1].split('.')[0]; /** This is because paths are of type: 'blogs/blogX.md' */
+        navigate(`/blog/${blogId}`);
     }
 
-    if (loading) {
-        return (
-            <div className={styles.loading}>
-                <div className={styles.spinner} />
-            </div>
-        )
-    }
     return (
         <div className={styles.blog}>
             <div className={styles.headerImage}></div>
@@ -33,7 +22,7 @@ const Blog = () => {
                 {
                     Blogs.map(({ id, path, title, description }) => {
                         return (
-                            <div key={id} className={styles.blogCard} onClick={() => onCardClick(id, path, title)}>
+                            <div key={id} className={styles.blogCard} onClick={() => onCardClick(path)}>
                                 <div className={styles.title}>{title}</div>
                                 <div className={styles.line}></div>
                                 <div className={styles.description}>{description}</div>

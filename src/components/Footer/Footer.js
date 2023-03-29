@@ -40,7 +40,7 @@ const Footer = () => {
                 "Access-Control-Allow-Methods": "GET,POST,PATCH,OPTIONS"
             };
 
-            axios.get("http://localhost:8081/setEmail", {
+            axios.get("/setEmail", {
                 headers,
                 params: {
                     doc: {

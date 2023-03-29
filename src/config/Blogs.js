@@ -22,4 +22,11 @@ export const Blogs = [
         estimatedTime: '10 min read',
         publishDate: 'Mar XX, 20XX',
 	},
+    {
+		id: "Post4",
+		title: "Post4",
+		description: "This is an article about a recent event that has happened.",
+        estimatedTime: '7 min read',
+        publishDate: 'Mar XX, 20XX',
+	},
 ];

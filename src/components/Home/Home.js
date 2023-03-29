@@ -5,7 +5,7 @@ import BlogSection from "../BlogSection/BlogSection";
 import Feedback from "../Feedback/Feedback";
 import Footer from "../Footer/Footer";
 
-const OFFSET_MULTIPLIER = 0.09;
+const OFFSET_MULTIPLIER = 0.0975;
 const useHome = function (firstQuoteScrollHandler, secondQuoteScrollHandler) {
 	React.useEffect(() => {
 		const appElement = document.getElementById("app");

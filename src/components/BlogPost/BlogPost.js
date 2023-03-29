@@ -2,13 +2,17 @@ import React from "react";
 import Markdown from 'markdown-to-jsx';
 import axios from 'axios';
 import styles from "./BlogPost.module.scss";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Blogs } from "../../config/Blogs";
 
 const BlogPost = () => {
 	const [data, setData] = React.useState("");
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
-    const { state } = useLocation();
+
+    const params = useParams();
+    const currentPath = `blogs/${params.id}.md`;
+    const currentBlogConfig = Blogs.find(blog => blog.path === currentPath);
 
 	React.useEffect(() => {
         const headers = {
@@ -16,10 +20,10 @@ const BlogPost = () => {
             "Access-Control-Allow-Methods": "GET,POST,PATCH,OPTIONS"
         };
         setLoading(true);
-        axios.get("http://localhost:8081/getBlogPosts", {
+        axios.get("/getBlogPosts", {
             headers,
             params: {
-                path: state.path
+                path: currentPath
             }
         })
             .then((response) => {
@@ -34,7 +38,7 @@ const BlogPost = () => {
             }).finally(() => {
                 setLoading(false);
             });
-	}, [state]);
+	}, [currentPath]);
 
     if (loading) {
         return (
@@ -51,9 +55,10 @@ const BlogPost = () => {
             </div>
         )
     }
+
 	return (
 		<div className={styles.blogPost}>
-            <h1 className={styles.title}>{state.title}</h1>
+            <h1 className={styles.title}>{currentBlogConfig.title}</h1>
             <Markdown>
                 {data}
             </Markdown>

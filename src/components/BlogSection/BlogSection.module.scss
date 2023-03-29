@@ -11,7 +11,7 @@
 		display: block;
 		text-align: center;
 		width: 100%;
-		margin: 5.4rem 0 2.7rem 0;
+		margin: 5.4rem 0;
 		font-size: 3rem;
 		font-family: fantasy;
 		font-weight: 600;
@@ -19,21 +19,23 @@
 	}
 
 	.headerAnimate {
-		animation: animate 1.8s linear forwards;
+		animation: animate 1.2s linear forwards;
 	}
 
 	.cardGrid {
-		width: 45%;
+        width: 100%;
 		height: max-content;
 		display: grid;
-		grid-template-rows: repeat(3, 1fr);
-		gap: 4.5rem 0;
-		margin-top: 2.7rem;
-		padding: 1rem 0.9rem;
+		grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+		gap: 2.7rem;
+		margin: 2.7rem 0;
+		padding: 1rem 9rem;
 
 		.card {
 			height: 21rem;
+            width: 100%;
 			border-radius: 1rem;
+            padding: 0 1.5rem;
 			position: relative;
 			overflow: hidden;
 			transition: 1s ease-in-out;
@@ -50,16 +52,17 @@
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				justify-content: center;
 				font-family: fantasy;
-				padding: 1rem;
+				padding: 3rem;
 				transition: 0.45s ease-in-out;
 				background: rgba(0, 0, 0, 0.1);
 				color: #fff;
 
 				.content {
-					margin-bottom: 1rem;
+					margin: 1.8rem 0;
 					font-size: 1.2rem;
+                    height: 36%;
+                    width: 100%;
 				}
 
 				.readArticle {
@@ -83,12 +86,13 @@
 				height: 80%;
 				padding-left: 1.5rem;
                 padding-top: 1.2rem;
-				font-size: 3rem;
-                font-family: 'Abril Fatface', cursive;
+				font-size: 2.1rem;
+                font-family: "Cormorant Garamond", serif;
 				letter-spacing: 0.09rem;
 				transition: 0.5s ease-in-out;
 				transition-delay: 0.45s;
 				color: #fff;
+                font-weight: 900;
 			}
 
 			.footer {
